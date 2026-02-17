@@ -1,0 +1,40 @@
+{
+  "name": "Report Composer",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+
+  // Forward port 3000 so the browser on the host reaches Next.js
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js dev server",
+      "onAutoForward": "openPreview"
+    }
+  },
+
+  // Install dependencies once the container is created
+  "postCreateCommand": "npm install",
+
+  // Start the dev server automatically when the container opens
+  "postStartCommand": "npm run dev",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-typescript-next",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "typescript.preferences.importModuleSpecifier": "non-relative",
+        "tailwindCSS.experimental.classRegex": [
+          ["className=\"([^\"]*)\"", "([^\"]*)"]
+        ]
+      }
+    }
+  }
+}
